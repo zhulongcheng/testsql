@@ -1,0 +1,26 @@
+language: go
+go:
+  - 1.8.x
+  - 1.9.x
+  - 1.10.x
+  - 1.11.x
+
+services:
+  - mysql
+
+before_install:
+  - go get github.com/go-sql-driver/mysql
+  - go get golang.org/x/tools/cmd/cover
+  - go get github.com/mattn/goveralls
+
+before_script:
+  - mysql -e "CREATE USER 'testsql'@'%';"
+  - mysql -e "GRANT ALL PRIVILEGES ON * . * TO 'testsql'@'%' IDENTIFIED BY 'password';"
+
+script:
+  - pwd
+  - ls -al
+  - go test -v -race -coverprofile=coverage.txt -covermode=atomic
+
+after_script:
+  - bash <(curl -s https://codecov.io/bash)
