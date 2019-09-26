@@ -6,6 +6,8 @@
 [![GoDoc](https://godoc.org/github.com/zhulongcheng/testsql?status.svg)](https://godoc.org/github.com/zhulongcheng/testsql)
 
 
+ ![TestSQL](./docs/img/testsql.png)
+
 Generate test data from SQL files before testing and clear it after finished.
 
 ## Contents
